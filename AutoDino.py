@@ -19,9 +19,12 @@ class capture(threading.Thread):
                 img = Image.open(imageFile)
             except:
                 continue
-            if sum(img.load()[1,1][:3]) < 260:
-                thread = jump()
-                thread.start()
+            for i in range(20):
+                if sum(img.load()[i,0][:3]) < 260:
+                    thread = jump()
+                    thread.start()
+                    time.sleep(0.8)
+                    break
 
 os.chdir(os.path.dirname(os.path.realpath(__file__)))
 
